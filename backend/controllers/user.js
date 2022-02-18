@@ -1,5 +1,6 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const { AUTH_FAILED } = require("../constants/messages");
 
 const User = require("../models/user");
 
@@ -31,7 +32,7 @@ exports.userLogin = (req, res, next) => {
     .then(user => {
       if (!user) {
         return res.status(401).json({
-          message: "Auth failed"
+          message: AUTH_FAILED
         });
       }
       fetchedUser = user;
@@ -40,7 +41,7 @@ exports.userLogin = (req, res, next) => {
     .then(result => {
       if (!result) {
         return res.status(401).json({
-          message: "Auth failed"
+          message: AUTH_FAILED
         });
       }
       const token = jwt.sign(
