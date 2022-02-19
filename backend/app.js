@@ -10,16 +10,16 @@ const app = express();
 
 mongoose
   .connect(
-    "mongodb://localhost:27017/posts-blog?readPreference=primary&appname=MongoDB%20Compass&ssl=false",
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-      useFindAndModify: false,
-    }
-    // "mongodb+srv://max:" +
-    //   process.env.MONGO_ATLAS_PW +
-    //   "@cluster0-ntrwp.mongodb.net/node-angular"
+    // "mongodb://localhost:27017/posts-blog?readPreference=primary&appname=MongoDB%20Compass&ssl=false",
+    // {
+    //   useNewUrlParser: true,
+    //   useUnifiedTopology: true,
+    //   useCreateIndex: true,
+    //   useFindAndModify: false,
+    // }
+    "mongodb+srv://randrin:" +
+      process.env.MONGO_ATLAS_PW +
+      "@posts-blog.pdppb.mongodb.net/posts-blog?retryWrites=true&w=majority"
   )
   .then(() => {
     console.log("Connected to database!");
